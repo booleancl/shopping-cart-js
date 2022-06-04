@@ -17,7 +17,22 @@ const Cart = {
       }
       this.items.push(tempProd)
     }
+    console.log(this.items);
+  },
+
+  getProductQuantity(){
+    return this.items.reduce((acc, { quantity }) => acc + quantity, 0)
+  },
+
+  getProducts(){
+    return this.items
+  },
+
+  empty(){
+    this.items = []
   }
 }
+
+
 
 export default Cart
