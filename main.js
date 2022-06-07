@@ -22,13 +22,29 @@ const updateNavbar = ()=>{
 const updateModal = ()=> {
   const products = Cart.getProducts()
   const modalBody = document.getElementById('modal-body')
+  
   emptyModal()
-  products.forEach((product) => {
+  
+  if( products.length > 0 ){
+    let productsTable = document.createElement('table')
+    productsTable.classList.add('table')
+    
+    let tableHead = document.createElement('th')
+    let tableHeadRow = document.createElement('tr')
+    
+    ['Producto','Imagen', 'Precio', 'Cantidad','Impto','Total']
+    
+    modalBody.appendChild(productsTable)
+    products.forEach((product) => {
+      let infoNode = document.createTextNode(`Producto: ${product.name}, Cantidad: ${product.quantity}`)
+      par.appendChild(infoNode)
+    })
+  } else {
     let par = document.createElement('p')
-    let infoNode = document.createTextNode(`Producto: ${product.name}, Cantidad: ${product.quantity}`)
+    let infoNode = document.createTextNode(`Carrito Vacío`)
     par.appendChild(infoNode)
     modalBody.appendChild(par)
-  })
+  } 
 }
 
 const emptyModal = ()=> {
@@ -40,14 +56,13 @@ const emptyModal = ()=> {
 
 const emptyCart = (e)=>{
   e.preventDefault()
-  const myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
-    keyboard: false
+  Cart.getProducts().forEach((product) => {
+    Products.updateStock(product.name, product.quantity)
   })
-  console.log('hola');
-  myModal.hide()
-  console.log('hola22');
+  Products.redraw()
   Cart.empty()
-  Products.init()
+  updateNavbar()
+  updateModal()
 }
 
 const removeFromCart= (event) => {

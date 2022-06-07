@@ -106,6 +106,7 @@ const Products = {
   appendCard(product){
     let cardNode = document.createElement('div')
     cardNode.classList.add('card')
+    cardNode.classList.add('mb-3')
     
     this.addImage(cardNode, product.img)
     this.addCardBody(cardNode, product)  

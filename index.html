@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <!-- Barra de Navegación Principal -->
   <nav class="navbar navbar-light bg-purple">
     <div class="container">
       <a class="navbar-brand" href="#">
@@ -22,7 +23,11 @@
       </button>
     </div>
   </nav>
+  
+  <!-- Título de la página -->
   <h1 class="text-center">Simple Shopping Cart Demo</h1>
+  
+  <!-- Contenedor para el catálogo -->
   <div class="container">
     <div class="row">
       <div id="products-list"></div>
@@ -38,9 +43,10 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div id="modal-body" class="modal-body">
+          <p>Carrito Vacío</p>
         </div>
         <div class="modal-footer">
-          <button id="empty-cart" type="button" class="btn btn-secondary">Empty Cart</button>
+          <button id="empty-cart" type="button" data-bs-dismiss="modal" class="btn btn-secondary">Empty Cart</button>
           <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
